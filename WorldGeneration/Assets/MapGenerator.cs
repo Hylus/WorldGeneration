@@ -6,7 +6,9 @@ public class MapGenerator : MonoBehaviour {
 
     public enum DrawMode {
         NoiseMap,
-        ColorMap
+        ColorMap,
+        Mesh,
+
     }
     public DrawMode drawMode;
 
@@ -55,6 +57,10 @@ public class MapGenerator : MonoBehaviour {
         else if (drawMode == DrawMode.ColorMap)
         {
             mapDisplay.DrawTexture(TextureGenerator.TextureFromColorMap(colorMap, _mapWidth, _mapHeigh));
+        }
+        else if(drawMode == DrawMode.Mesh)
+        {
+            mapDisplay.DrawMesh(MeshGenerator.GenerateTerrainMesh(noiseMap), TextureGenerator.TextureFromColorMap(colorMap, _mapWidth, _mapHeigh));
         }
 
     }
